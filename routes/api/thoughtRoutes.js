@@ -3,7 +3,7 @@ const router = express.Router();
 const thoughtController = require('../controllers/thoughtController')
 
 router.get('/', thoughtController.getAllThoughts);
-router.get('/:id', thoughtController.getthoughtById);
+router.get('/:id', thoughtController.getThoughtById);
 router.post('/', thoughtController.createThought);
 router.put('/:id', thoughtController.updateThought);
 router.delete('/:id', thoughtController.deleteThought);

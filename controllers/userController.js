@@ -49,13 +49,13 @@ const userController  = {
             res.json(user);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error - userController.updateUser'});
+            res.status(500).json({ message: 'Server error - userController.updateUser' });
         }
     },
 
     deleteUser: async (req,res) => {
         try{
-            const user = await User.findById(req.params.id);
+            const user = await User.findById(req.params.id); //TODO: does this just delete the thoughts of the user or the user itself?
 
             if(!user) {
                 return res.status(404).json({ message: 'User Id not found'});
@@ -67,7 +67,7 @@ const userController  = {
 
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error - userController.updateUser'});
+            res.status(500).json({ message: 'Server error - userController.updateUser' });
         }
     },
 
@@ -89,7 +89,7 @@ const userController  = {
 
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error - userController.getAssocaitedThoughtsAndFriends'});
+            res.status(500).json({ message: 'Server error - userController.getAssocaitedThoughtsAndFriends' });
         }
     },
 
@@ -105,7 +105,7 @@ const userController  = {
 
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error - userController.addFriend'});
+            res.status(500).json({ message: 'Server error - userController.addFriend' });
         }
     },
 
@@ -120,7 +120,7 @@ const userController  = {
 
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error - userController.deleteFriend'});
+            res.status(500).json({ message: 'Server error - userController.deleteFriend' });
         }
     },
 }
