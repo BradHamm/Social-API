@@ -64,7 +64,7 @@ const thoughtController = {
 
     createReaction: async (req,res) => {
         try {
-            const thought = await Thought.findByIdAndUpdate(req.params.id, { $push: { reactions: req.body } }, { new: true });
+            const thought = await Thought.findByIdAndUpdate(req.params.thoughtId, { $push: { reactions: new Reaction(req.body) } }, { new: true });
             if(!thought) {
                 return res.status(404).json({ message: 'Thought Id not found' });
             }
@@ -77,7 +77,7 @@ const thoughtController = {
 
     deleteReaction: async (req,res) => {
         try {
-            const thought = await Thought.findByIdAndUpdate(req.params.id, { $pull: { reactions: { _id: req.params.reactionId}}}, { new: true });
+            const thought = await Thought.findByIdAndUpdate(req.params.thoughtId, { $pull: { reactions: { _id: req.params.reactionId}}}, { new: true });
             if (!thought) {
                 res.status(404).json({ message: 'Thought Id not found'});
             }
@@ -88,3 +88,5 @@ const thoughtController = {
         }
     }
 }
+
+module.exports = thoughtController;
